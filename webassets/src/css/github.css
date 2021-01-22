@@ -1,117 +1,71 @@
+/*
+Monokai style - ported by Luigi Maselli - http://grigio.org
+*/
+
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  color: #333;
-  background: #f8f8f8;
-  -webkit-text-size-adjust: none;
-}
-
-.hljs-comment,
-.diff .hljs-header {
-  color: #998;
-  font-style: italic;
-}
-
-.hljs-keyword,
-.css .rule .hljs-keyword,
-.hljs-winutils,
-.nginx .hljs-title,
-.hljs-subst,
-.hljs-request,
-.hljs-status {
-  color: #333;
-  font-weight: bold;
-}
-
-.hljs-number,
-.hljs-hexcolor,
-.ruby .hljs-constant {
-  color: #008080;
-}
-
-.hljs-string,
-.hljs-tag .hljs-value,
-.hljs-doctag,
-.tex .hljs-formula {
-  color: #d14;
-}
-
-.hljs-title,
-.hljs-id,
-.scss .hljs-preprocessor {
-  color: #900;
-  font-weight: bold;
-}
-
-.hljs-list .hljs-keyword,
-.hljs-subst {
-  font-weight: normal;
-}
-
-.hljs-class .hljs-title,
-.hljs-type,
-.vhdl .hljs-literal,
-.tex .hljs-command {
-  color: #458;
-  font-weight: bold;
+  background: #272822;
+  color: #ddd;
 }
 
 .hljs-tag,
-.hljs-tag .hljs-title,
-.hljs-rule .hljs-property,
-.django .hljs-tag .hljs-keyword {
-  color: #000080;
-  font-weight: normal;
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-strong,
+.hljs-name {
+  color: #f92672;
+}
+
+.hljs-code {
+  color: #66d9ef;
+}
+
+.hljs-class .hljs-title {
+  color: white;
 }
 
 .hljs-attribute,
-.hljs-variable,
-.lisp .hljs-body,
-.hljs-name {
-  color: #008080;
-}
-
-.hljs-regexp {
-  color: #009926;
-}
-
 .hljs-symbol,
-.ruby .hljs-symbol .hljs-string,
-.lisp .hljs-keyword,
-.clojure .hljs-keyword,
-.scheme .hljs-keyword,
-.tex .hljs-special,
-.hljs-prompt {
-  color: #990073;
+.hljs-regexp,
+.hljs-link {
+  color: #bf79db;
 }
 
-.hljs-built_in {
-  color: #0086b3;
+.hljs-string,
+.hljs-bullet,
+.hljs-subst,
+.hljs-title,
+.hljs-section,
+.hljs-emphasis,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: #a6e22e;
 }
 
-.hljs-preprocessor,
-.hljs-pragma,
-.hljs-pi,
-.hljs-doctype,
-.hljs-shebang,
-.hljs-cdata {
-  color: #999;
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #75715e;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag,
+.hljs-title,
+.hljs-section,
+.hljs-type,
+.hljs-selector-id {
   font-weight: bold;
-}
-
-.hljs-deletion {
-  background: #fdd;
-}
-
-.hljs-addition {
-  background: #dfd;
-}
-
-.diff .hljs-change {
-  background: #0086b3;
-}
-
-.hljs-chunk {
-  color: #aaa;
 }
