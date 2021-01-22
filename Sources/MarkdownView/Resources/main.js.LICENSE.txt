@@ -1,4 +1,39 @@
 /*
+
+For the reasoning behind this please see:
+https://github.com/highlightjs/highlight.js/issues/2880#issuecomment-747275419
+
+*/
+
+/*
+
+This is a preservation of the old bloated SQL grammar which includes pretty much
+the kitchen sink because no one was keeping track of which keywords belong to
+which databases.  This is likely to be removed in the future.
+
+- Oracle SQL should be factored into it's own 3rd party grammar.
+- MySQL should be factored out into it's own 3rd party grammar.
+
+*/
+
+/*
+        {
+          // IPv4 addresses and subnets
+          className: 'number',
+          variants: [
+            {begin: IPADDR_wBITMASK+'(,'+IPADDR_wBITMASK+')*'}, //192.168.0.0/24,1.2.3.0/24
+            {begin: IPADDR+'-'+IPADDR},       // 192.168.0.1-192.168.0.3
+            {begin: IPADDR+'(,'+IPADDR+')*'}, // 192.168.0.1,192.168.0.34,192.168.24.1,192.168.0.1
+          ]
+        },
+        {
+          // MAC addresses and DHCP Client IDs
+          className: 'number',
+          begin: /\b(1:)?([0-9A-Fa-f]{1,2}[:-]){5}([0-9A-Fa-f]){1,2}\b/,
+        },
+        */
+
+/*
       On any opening or closing tag of the original markup we first close
       the entire highlighted node stack, then render the original tag along
       with all the following original tags at the same offset and then
@@ -81,10 +116,16 @@
 */
 
 /*
+  This rather scary looking matching of Mathematica numbers is carefully explained by Robert Jacobson here:
+  https://wltools.github.io/LanguageSpec/Specification/Syntax/Number-representations/
+   */
+
+/*
  Language: Apache Access Log
  Author: Oleg Efimov <efimovov@gmail.com>
  Description: Apache/Nginx Access Logs
  Website: https://httpd.apache.org/docs/2.4/logs.html#accesslog
+ Audit: 2020
  */
 
 /*
@@ -107,15 +148,6 @@
  Contributors: Adam Joseph Cook <adam.joseph.cook@gmail.com>
  Description: G-code syntax highlighter for Fanuc and other common CNC machine tool controls.
  Website: https://www.sis.se/api/document/preview/911952/
- */
-
-/*
- Language: GAMS
- Author: Stefan Bechert <stefan.bechert@gmx.net>
- Contributors: Oleg Efimov <efimovov@gmail.com>, Mikko Kouhia <mikko.kouhia@iki.fi>
- Description: The General Algebraic Modeling System language
- Website: https://www.gams.com
- Category: scientific
  */
 
 /*
@@ -166,9 +198,15 @@
 
 /*
  Language: SQL
+ Website: https://en.wikipedia.org/wiki/SQL
+ Category: common, database
+ */
+
+/*
+ Language: SQL More (mix of MySQL, Oracle, etc)
  Contributors: Nikolay Lisienko <info@neor.ru>, Heiko August <post@auge8472.de>, Travis Odom <travis.a.odom@gmail.com>, Vadimtro <vadimtro@yahoo.com>, Benjamin Auder <benjamin.auder@gmail.com>
  Website: https://en.wikipedia.org/wiki/SQL
- Category: common
+ Category: database
  */
 
 /*
@@ -176,6 +214,7 @@
  Description: Zephir, an open source, high-level language designed to ease the creation and maintainability of extensions for PHP with a focus on type and memory safety.
  Author: Oleg Efimov <efimovov@gmail.com>
  Website: https://zephir-lang.com/en
+ Audit: 2020
  */
 
 /*
@@ -217,6 +256,7 @@ Website: https://www.microchip.com/webdoc/avrassembler/avrassembler.wb_instructi
 Language: ActionScript
 Author: Alexander Myadzel <myadzel@gmail.com>
 Category: scripting
+Audit: 2020
 */
 
 /*
@@ -242,6 +282,7 @@ Contributors: Ivan Sagalaev <maniac@softwaremaniacs.org>
 Website: https://httpd.apache.org
 Description: language definition for Apache configuration files (httpd.conf & .htaccess)
 Category: common, config
+Audit: 2020
 */
 
 /*
@@ -249,13 +290,13 @@ Language: AppleScript
 Authors: Nathan Grigg <nathan@nathanamy.org>, Dr. Drang <drdrang@gmail.com>
 Category: scripting
 Website: https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html
+Audit: 2020
 */
 
 /*
 Language: Arduino
 Author: Stefania Mellai <s.mellai@arduino.cc>
 Description: The Arduino® Language is a superset of C++. This rules are designed to highlight the Arduino® source code. For info about language see http://www.arduino.cc.
-Requires: cpp.js
 Website: https://www.arduino.cc
 */
 
@@ -273,12 +314,14 @@ Language: AspectJ
 Author: Hakan Ozler <ozler.hakan@gmail.com>
 Website: https://www.eclipse.org/aspectj/
 Description: Syntax Highlighting for the AspectJ Language which is a general-purpose aspect-oriented extension to the Java programming language.
- */
+Audit: 2020
+*/
 
 /*
 Language: Augmented Backus-Naur Form
 Author: Alex McKibben <alex@nullscope.net>
 Website: https://tools.ietf.org/html/rfc5234
+Audit: 2020
 */
 
 /*
@@ -340,13 +383,12 @@ Website: https://esolangs.org/wiki/Brainfuck
 Language: C
 Category: common, system
 Website: https://en.wikipedia.org/wiki/C_(programming_language)
-Requires: c-like.js
 */
 
 /*
 Language: C#
 Author: Jason Diamond <jason@diamond.name>
-Contributor: Nicolas LLOBERA <nllobera@gmail.com>, Pieter Vantorre <pietervantorre@gmail.com>
+Contributor: Nicolas LLOBERA <nllobera@gmail.com>, Pieter Vantorre <pietervantorre@gmail.com>, David Pine <david.pine@microsoft.com>
 Website: https://docs.microsoft.com/en-us/dotnet/csharp/
 Category: common
 */
@@ -355,14 +397,12 @@ Category: common
 Language: C++
 Category: common, system
 Website: https://isocpp.org
-Requires: c-like.js
 */
 
 /*
 Language: C-like foundation grammar for C/C++ grammars
 Author: Ivan Sagalaev <maniac@softwaremaniacs.org>
 Contributors: Evgeny Stepanischev <imbolk@gmail.com>, Zaven Muradyan <megalivoithos@gmail.com>, Roel Deckers <admin@codingcat.nl>, Sam Wu <samsam2310@gmail.com>, Jordi Petit <jordi.petit@gmail.com>, Pieter Vantorre <pietervantorre@gmail.com>, Google Inc. (David Benjamin) <davidben@google.com>
-Category: common, system
 */
 
 /*
@@ -674,6 +714,7 @@ Category: scripting
 Language: HTML, XML
 Website: https://www.w3.org/XML/
 Category: common
+Audit: 2020
 */
 
 /*
@@ -773,7 +814,7 @@ Website: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 Language: Julia
 Description: Julia is a high-level, high-performance, dynamic programming language.
 Author: Kenta Sato <bicycle1885@gmail.com>
-Contributors: Alex Arslan <ararslan@comcast.net>
+Contributors: Alex Arslan <ararslan@comcast.net>, Fredrik Ekre <ekrefredrik@gmail.com>
 Website: https://julialang.org
 */
 
@@ -814,6 +855,7 @@ Author: Michael Rodler <contact@f0rki.at>
 Description: language used as intermediate representation in the LLVM compiler framework
 Website: https://llvm.org/docs/LangRef.html
 Category: assembler
+Audit: 2020
 */
 
 /*
@@ -826,7 +868,7 @@ Category: scripting
 
 /*
 Language: LaTeX
-Author: Vladimir Moskva <vladmos@gmail.com>
+Author: Benedikt Wilde <bwilde@posteo.de>
 Website: https://www.latex-project.org
 Category: markup
 */
@@ -919,14 +961,6 @@ Category: common, markup
 */
 
 /*
-Language: Mathematica
-Description: Wolfram Mathematica (usually termed Mathematica) is a modern technical computing system spanning most areas of technical computing.
-Authors: Daniel Kvasnicka <dkvasnicka@vendavo.com>, Jan Poeschko <jan@poeschko.com>
-Website: https://www.wolfram.com/mathematica/
-Category: scientific
-*/
-
-/*
 Language: Matlab
 Author: Denis Bardadym <bardadymchik@gmail.com>
 Contributors: Eugene Nizhibitsky <nizhibitsky@ya.ru>, Egor Rogov <e.rogov@postgrespro.ru>
@@ -949,7 +983,8 @@ Website: https://www.mercurylang.org
 */
 
 /*
-Language: Microsoft Axapta (now Dynamics 365)
+Language: Microsoft X++
+Description: X++ is a language used in Microsoft Dynamics 365, Dynamics AX, and Axapta.
 Author: Dmitri Roudakov <dmitri@roudakov.ru>
 Website: https://dynamics.microsoft.com/en-us/ax-overview/
 Category: enterprise
@@ -1022,6 +1057,13 @@ Language: Nix
 Author: Domen Kožar <domen@dev.si>
 Description: Nix functional language
 Website: http://nixos.org/nix
+*/
+
+/*
+Language: Node REPL
+Requires: javascript.js
+Author: Marat Nagayev <nagaevmt@yandex.ru>
+Category: scripting
 */
 
 /*
@@ -1224,8 +1266,9 @@ Category: scripting
 Language: R
 Description: R is a free software environment for statistical computing and graphics.
 Author: Joe Cheng <joe@rstudio.org>
+Contributors: Konrad Rudolph <konrad.rudolph@gmail.com>
 Website: https://www.r-project.org
-Category: scientific
+Category: common,scientific
 */
 
 /*
@@ -1349,6 +1392,7 @@ Language: Shell Session
 Requires: bash.js
 Author: TSUYUSATO Kitsune <make.just.on@gmail.com>
 Category: common
+Audit: 2020
 */
 
 /*
@@ -1399,8 +1443,8 @@ Website: https://pypi.org/project/python-subunit/
 /*
 Language: Swift
 Description: Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns.
-Author: Chris Eidhof <chris@eidhof.nl>
-Contributors: Nate Cook <natecook@gmail.com>, Alexander Lichter <manniL@gmx.net>
+Author: Steven Van Impe <steven.vanimpe@icloud.com>
+Contributors: Chris Eidhof <chris@eidhof.nl>, Nate Cook <natecook@gmail.com>, Alexander Lichter <manniL@gmx.net>, Richard Gibson <gibson042@github>
 Website: https://swift.org
 Category: common, system
 */
@@ -1519,8 +1563,17 @@ Category: scripting
 /*
 Language: Visual Basic .NET
 Description: Visual Basic .NET (VB.NET) is a multi-paradigm, object-oriented programming language, implemented on the .NET Framework.
-Author: Poren Chiang <ren.chiang@gmail.com>
-Website: https://docs.microsoft.com/en-us/dotnet/visual-basic/getting-started/
+Authors: Poren Chiang <ren.chiang@gmail.com>, Jan Pilzer
+Website: https://docs.microsoft.com/dotnet/visual-basic/getting-started
+Category: common
+*/
+
+/*
+Language: Wolfram Language
+Description: The Wolfram Language is the programming language used in Wolfram Mathematica, a modern technical computing system spanning most areas of technical computing.
+Authors: Patrick Scheibe <patrick@halirutan.de>, Robert Jacobson <robertjacobson@acm.org>
+Website: https://www.wolfram.com/mathematica/
+Category: scientific
 */
 
 /*
@@ -1538,6 +1591,7 @@ Description: Supports XQuery 3.1 including XQuery Update 3, so also XPath (as it
 Refactored to process xml constructor syntax and function-bodies. Added missing data-types, xpath operands, inbuilt functions, and query prologs
 Website: https://www.w3.org/XML/Query/
 Category: functional
+Audit: 2020
 */
 
 /*
@@ -1996,6 +2050,8 @@ Category: config
 
 /* 271 */
 
+/* 272 */
+
 /* 28 */
 
 /* 29 */
@@ -2170,19 +2226,11 @@ Category: config
 
 /* Excel formula comments are done by putting the comment in a function call to N() */
 
-/* In the future the intention is to split out the C/C++ grammars distinctly
-since they are separate languages.  They will likely share a common foundation
-though, and this file sets the groundwork for that - so that we get the breaking
-change in v10 and don't have to change the requirements again later.
-
-See: https://github.com/highlightjs/highlight.js/issues/2146
-*/
-
 /* Interface definition */
 
 /* Quoted string with variables inside */
 
-/* Stream merging */
+/* Stream merging support functions */
 
 /* Utility functions */
 
@@ -2221,17 +2269,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 /* core facts */
 
+/* don't color identifiers, but safely catch all identifiers with ' */
+
 /* don't color identifiers, but safely catch all identifiers with '*/
 
 /* eslint-disable no-bitwise */
 
 /* eslint-disable no-script-url */
 
-/* eslint-disable no-unreachable */
-
 /* eslint-enable no-script-url */
-
-/* fixMarkup is deprecated and will be removed entirely in v11 */
 
 /* for pos section at bottom */
 
@@ -2271,11 +2317,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 /* parameters to instances */
 
+/* plugin itself */
+
 /* polymorphic variant */
 
 /* reserved deprecated keywords */
-
-/* s-u */
 
 /* single-line comment */
 
@@ -2332,6 +2378,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 /**
      * @param {Mode} mode - new mode to start
+     */
+
+/**
+     * @param {RegExpMatchArray} match
+     * @param {CallbackResponse} response
      */
 
 /**
@@ -2534,9 +2585,14 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 /**
    * Builds new class name for block given the language name
    *
-   * @param {string} prevClassName
+   * @param {HTMLElement} element
    * @param {string} [currentLang]
    * @param {string} [resultLang]
+   */
+
+/**
+   * Character Literal
+   * Either a single character ("a"C) or an escaped double quote (""""C).
    */
 
 /**
@@ -2626,14 +2682,14 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
    * @param {string} languageName - the language to use for highlighting
    * @param {string} code - the code to highlight
    * @param {boolean} [ignoreIllegals] - whether to ignore illegal matches, default is to bail
-   * @param {Mode} [continuation] - current continuation mode, if any
+   * @param {CompiledMode} [continuation] - current continuation mode, if any
    *
    * @returns {HighlightResult} Result - an object that represents the result
    * @property {string} language - the language name
    * @property {number} relevance - the relevance score
    * @property {string} value - the highlighted HTML code
    * @property {string} code - the original raw code
-   * @property {Mode} top - top of the current mode stack
+   * @property {CompiledMode} top - top of the current mode stack
    * @property {boolean} illegal - indicates whether any illegal matches were found
   */
 
@@ -2893,13 +2949,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
    **/
 
 /**
-   * Skip a match if it has a preceding or trailing dot
-   *
-   * This is used for `beginKeywords` to prevent matching expressions such as
-   * `bob.keyword.do()`. The mode compiler automatically wires this up as a
-   * special _internal_ 'on:begin' callback for modes with `beginKeywords`
+   * Takes a string like "<Booger" and checks to see
+   * if we can find a matching "</Booger" later in the
+   * content.
    * @param {RegExpMatchArray} match
-   * @param {CallbackResponse} response
+   * @param {{after:number}} param1
    */
 
 /**
@@ -3012,7 +3066,7 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 /**
    * Updates highlight.js global options with the passed options
    *
-   * @param {{}} userOptions
+   * @param {Partial<HLJSOptions>} userOptions
    */
 
 /**
@@ -3021,7 +3075,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
    * @param {string} languageName - the language to use for highlighting
    * @param {string} code - the code to highlight
    * @param {boolean} [ignoreIllegals] - whether to ignore illegal matches, default is to bail
-   * @param {Mode} [continuation] - current continuation mode, if any
+   * @param {CompiledMode} [continuation] - current continuation mode, if any
+   * @returns {HighlightResult} - result of the highlight operation
   */
 
 /**
@@ -3064,6 +3119,12 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
      @param {string} code
     @param {Array<string>} [languageSubset]
     @returns {AutoHighlightResult}
+  */
+
+/**
+  Note: fixMarkup is deprecated and will be removed entirely in v11
+   @param {string} arg
+  @returns {string}
   */
 
 /**
@@ -3115,6 +3176,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
  */
 
 /**
+ * @param {string} message
+ * @param {any} args
+ */
+
+/**
+ * @param {string} message
+ */
+
+/**
  * @param {string} value
  * @returns {RegExp}
  * */
@@ -3140,6 +3210,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
  */
 
 /**
+ * Allow `illegal` to contain an array of illegal values
+ * @type {CompilerExt}
+ */
+
+/**
  * Any of the passed expresssions may match
  *
  * Creates a huge this | this | that | that match
@@ -3153,6 +3228,7 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
  * Given the raw result of a language definition (Language), compiles this so
  * that it is ready for highlighting code.
  * @param {Language} language
+ * @param {{plugins: HLJSPlugin[]}} opts
  * @returns {CompiledLanguage}
  */
 
@@ -3205,7 +3281,7 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
  * Given raw keywords from a language definition, compile them.
  *
  * @param {string | Record<string,string>} rawKeywords
- * @param {boolean} case_insensitive
+ * @param {boolean} caseInsensitive
  */
 
 /**
@@ -3502,6 +3578,16 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
  **/
 
 /**
+ * Skip a match if it has a preceding dot
+ *
+ * This is used for `beginKeywords` to prevent matching expressions such as
+ * `bob.keyword.do()`. The mode compiler automatically wires this up as a
+ * special _internal_ 'on:begin' callback for modes with `beginKeywords`
+ * @param {RegExpMatchArray} match
+ * @param {CallbackResponse} response
+ */
+
+/**
  * Token.attrGet(name)
  *
  * Get the value of attribute `name`, or null if it does not exist.
@@ -3531,6 +3617,16 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
  *
  * Set `name` attribute to `value`. Override old value if exists.
  **/
+
+/**
+ * `beginKeywords` syntactic sugar
+ * @type {CompilerExt}
+ */
+
+/**
+ * `match` to match a single expression for readability
+ * @type {CompilerExt}
+ */
 
 /**
  * class LinkifyIt
@@ -3778,6 +3874,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
  * @returns {T} a single new object
  */
 
+/**
+ * provides the default 1 relevance to all modes
+ * @type {CompilerExt}
+ */
+
 /**  */
 
 /** */
@@ -3785,8 +3886,6 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 /** @param {Attr} attr */
 
 /** @param {Node} node */
-
-/** @param {any} obj */
 
 /** @param {string} kind */
 
@@ -3812,23 +3911,31 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 /** @type Node */
 
+/** @type Record<string,CompiledMode> */
+
 /** @type Record<string,any> */
 
 /** @type {AnnotatedError} */
 
-/** @type {Language} */
+/** @type {BeforeHighlightContext} */
+
+/** @type {CompiledMode} */
+
+/** @type {HLJSPlugin} */
 
 /** @type {ModeCallback} */
 
 /** @type {Record<string, Language>} */
 
+/** @type {Record<string, string>} */
+
+/** @type {Record<string,any>} */
+
+/** @type {RegExp | string} */
+
 /** @type {Renderer} */
 
 /** @type {T} */
-
-/** @type {unknown[]} */
-
-/** @type {{ code: string, language: string, result?: any }} */
 
 /** @type {{type?: MatchType, index?: number, rule?: Mode}}} */
 
@@ -4047,10 +4154,6 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
    *             - The parser cursor is not moved forward.
    */
 
-/***********************************************
-  Keywords
-***********************************************/
-
 /************************************************************************/
 
 /******/
@@ -4097,22 +4200,6 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 /*istanbul ignore if*/
 
-/*{
-          // IPv4 addresses and subnets
-          className: 'number',
-          variants: [
-            {begin: IPADDR_wBITMASK+'(,'+IPADDR_wBITMASK+')*'}, //192.168.0.0/24,1.2.3.0/24
-            {begin: IPADDR+'-'+IPADDR},       // 192.168.0.1-192.168.0.3
-            {begin: IPADDR+'(,'+IPADDR+')*'}, // 192.168.0.1,192.168.0.34,192.168.24.1,192.168.0.1
-          ]
-        }, // */
-
-/*{
-          // MAC addresses and DHCP Client IDs
-          className: 'number',
-          begin: /\b(1:)?([0-9A-Fa-f]{1,2}[:-]){5}([0-9A-Fa-f]){1,2}\b/,
-        }, //*/
-
 //
 
 //                          ^^^^^^^ parse this
@@ -4125,35 +4212,19 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 //                ^^ skipping these spaces
 
-//             println(name)
-
 //            ^^^^^^^^^^^ parse this
 
 //          ^^^^^^ parsing link destination
 
 //         ^^^ skip optional whitespace here
 
-//         end
-
-//         if !(v isa Function || v isa Type || v isa TypeVar || v isa Module || v isa Colon)
-
-//         if v isa Type || v isa TypeVar
-
-//         println(kw)
+//         push!(res, kw)
 
 //         to make extra space appear
-
-//         v = eval(Symbol(name))
 
 //        ^^ skipping these spaces
 
 //       (we can replace it by preventing links from being parsed in
-
-//       First[Characters[#]] &]], " +\n"]
-
-//       Select[Names["System`*"],
-
-//       StringStartsQ[#, CharacterRange["A", "Z"] | "$"] &],
 
 //       [[[[[[[[[[[[[[[[[[[[[foo]()
 
@@ -4177,8 +4248,6 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 //     > test
 
-//     Values[GroupBy[
-
 //     ^ -- position start of line here:
 
 //     ```
@@ -4190,8 +4259,6 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 //     if !(contains(kw, " ") || kw == "struct")
 
 //     test
-
-//     try
 
 //     vv
 
@@ -4214,8 +4281,6 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 //    so `http:\\example.org\` is treated like a relative path
 
 //    which can be constructed using other parts of the url.
-
-//   "'" <> StringRiffle[#, " "] <> "'" & /@
 
 //   -
 
@@ -4301,6 +4366,70 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // """heredoc strings"""
 
+// "$bit", "$bitcount",
+
+// "$bitfind", "$bitlogic", "$case", "$char", "$classmethod", "$classname",
+
+// "$change", "$mv", "$mvat", "$mvfmt", "$mvfmts", "$mviconv",
+
+// "$compile", "$data", "$decimal", "$double", "$extract", "$factor",
+
+// "$find", "$fnumber", "$get", "$increment", "$inumber", "$isobject",
+
+// "$io", "$job", "$key", "$namespace", "$principal", "$quit", "$roles",
+
+// "$isvaliddouble", "$isvalidnum", "$justify", "$length", "$list",
+
+// "$listbuild", "$listdata", "$listfind", "$listfromstring", "$listget",
+
+// "$listlength", "$listnext", "$listsame", "$listtostring", "$listvalid",
+
+// "$locate", "$match", "$method", "$name", "$nconvert", "$next",
+
+// "$mviconvs", "$mvinmat", "$mvlover", "$mvoconv", "$mvoconvs", "$mvraise",
+
+// "$mvtrans", "$mvv", "$mvname", "$zbitand", "$zbitcount", "$zbitfind",
+
+// "$normalize", "$now", "$number", "$order", "$parameter", "$piece",
+
+// "$prefetchoff", "$prefetchon", "$property", "$qlength", "$qsubscript",
+
+// "$query", "$random", "$replace", "$reverse", "$sconvert", "$select",
+
+// "$sortbegin", "$sortend", "$stack", "$text", "$translate", "$view",
+
+// "$storage", "$system", "$test", "$this", "$tlevel", "$username",
+
+// "$wascii", "$wchar", "$wextract", "$wfind", "$wiswide", "$wlength",
+
+// "$wreverse", "$xecute", "$zabs", "$zarccos", "$zarcsin", "$zarctan",
+
+// "$x", "$y", "$za", "$zb", "$zchild", "$zeof", "$zeos", "$zerror",
+
+// "$zbitget", "$zbitlen", "$zbitnot", "$zbitor", "$zbitset", "$zbitstr",
+
+// "$zbitxor", "$zincrement", "$znext", "$zorder", "$zprevious", "$zsort",
+
+// "$zconvert", "$zcrc", "$zcyc", "$zdascii", "$zdchar", "$zf",
+
+// "$zcos", "$zcot", "$zcsc", "$zdate", "$zdateh", "$zdatetime",
+
+// "$zdatetimeh", "$zexp", "$zhex", "$zln", "$zlog", "$zpower", "$zsec",
+
+// "$zhorolog", "$zio", "$zjob", "$zmode", "$znspace", "$zparent", "$zpi",
+
+// "$ziswide", "$zlascii", "$zlchar", "$zname", "$zposition", "$zqascii",
+
+// "$zpos", "$zreference", "$zstorage", "$ztimestamp", "$ztimezone",
+
+// "$zqchar", "$zsearch", "$zseek", "$zstrip", "$zwascii", "$zwchar",
+
+// "$zsin", "$zsqr", "$ztan", "$ztime", "$ztimeh", "$zboolean",
+
+// "$ztrap", "$zversion"
+
+// "$zwidth", "$zwpack", "$zwbpack", "$zwunpack", "$zwbunpack", "$zzenkaku",
+
 // "Software"), to deal in the Software without restriction, including
 
 // "Whitespaces".
@@ -4311,9 +4440,13 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // "alt" attr MUST be set, even if empty. Because it's mandatory and
 
+// "device", "$ecode", "$estack", "$etrap", "$halt", "$horolog",
+
 // "echo" relevance has been set to 0 to avoid auto-detect conflicts with shell transcripts
 
 // "get",
+
+// "null",
 
 // "plaintext" stand-in so that the code blocks will still get normal
 
@@ -4323,17 +4456,25 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // "value" container
 
+// "}". match these so the constrained rule doesn't see them
+
 // #
 
-// # built_in generator:
+// # keyword generator, multi-word keywords handled manually below (Julia 1.5.2)
 
-// # keyword generator, multi-word keywords handled manually below
+// #H:mm[:ss]# (24h Time)
 
-// # literal generator
+// #YYYY-MM-DD# (ISO-Date) or #M/D/YYYY# (US-Date)
+
+// #compiler option
+
+// #h[:mm[:ss]] A# (12h Time)
 
 // $(language_strings)
 
 // $\n, $\r, $\t, $$
+
+// $keyword = x
 
 // $n
 
@@ -4359,6 +4500,10 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // '\x2D'
 
+// '^/{4,}$',
+
+// 'function',
+
 // 'self'
 
 // 'strings'
@@ -4366,6 +4511,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // '{}$%@~+=:' reserved for extentions
 
 // (!) Some patterns skipped, to avoid collisions
+
+// () => {} is more typical in TypeScript
 
 // (?!_) cause 1.5x slowdown
 
@@ -4427,11 +4574,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // ---
 
+// ------
+
 // ... → … (also ?.... → ?.., !.... → !..)
 
 // ....booger....
 
-// .3, 3.3, 3.3_3
+// ...because it's far more likely this is a statement terminator in
+
+// .keyword()
 
 // .toLowerCase().toUpperCase() should get rid of all differences
 
@@ -4440,6 +4591,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // /:
 
 // 0'a etc.
+
+// 0-prefixed implicit octal integer, optionally rational and/or imaginary
 
 // 0398;GREEK CAPITAL LETTER THETA;Lu;0;L;;;;;N;;;;03B8;
 
@@ -4507,13 +4660,25 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // <lower = ..., upper = ...> or <upper = ...>
 
+// <something>
+
+// <tag ...
+
+// <tag/>
+
+// <tag>
+
+// >>
+
+// ?>
+
 // ???????? → ???, !!!!! → !!!, `,,` → `,`
 
 // @ keywords
 
-// @attributes
-
 // @font-face
+
+// @ident@ or $ident$ that might indicate this is not ruby at all
 
 // @media features (it’s here to not duplicate things in AT_RULE_MODE with extra PARENS_MODE overriding):
 
@@ -4521,15 +4686,25 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // @ts-nocheck
 
+// A function \module_function_name:signature or \__module_function_name:signature,
+
 // A negative indentation means that this is a paragraph continuation
 
 // A position of the token this delimiter corresponds to.
+
+// A quark \q_the_name or \q__the_name or
+
+// A variable \scope_module_and_name_type or \scope__module_ane_name_type,
+
+// ARM syntax
 
 // Actually pragma
 
 // Add a slash for self-closing tags, e.g. `<img src="foo" /`
 
 // Add new tokens to pending list
+
+// Add supported submodes to string interpolation.
 
 // Add token name, e.g. `<img`
 
@@ -4559,11 +4734,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Avoid `split(regex)` for IE8 compatibility. See #17.
 
+// BLAH = ...;
+
 // Backquoted string
 
 // Base deafult colors in PB IDE: background: #FFFFDF; foreground: #000000;
 
 // Binary notation, e.g., %1010.
+
+// BinaryIntegerLiteral
 
 // Block ends with either:
 
@@ -4581,7 +4760,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Built-in macro variables take precedence
 
+// Builtin constants
+
 // But .toLowerCase() doesn't change ϑ (it's already lowercase),
+
+// But a type might: `<Array<Array<number>>`, etc.
 
 // CLONE
 
@@ -4641,6 +4824,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Common
 
+// Common Apple frameworks, for relevance boost
+
 // Common regexps
 
 // Commonmark default options
@@ -4655,7 +4840,9 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Constants
 
-// Convenience variables for build-in objects
+// Consume .built_in to prevent highlighting properties and methods.
+
+// Consume .keyword to prevent highlighting properties and methods as keywords.
 
 // Convert '\n' in paragraphs into <br>
 
@@ -4687,9 +4874,19 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 
+// Data types https://docs.microsoft.com/dotnet/visual-basic/language-reference/data-types
+
 // Dates
 
 // Decimal literal:
+
+// DecimalBigIntegerLiteral
+
+// DecimalFloatingPointLiteral
+
+// DecimalIntegerLiteral
+
+// DecimalLiteral
 
 // Declarations
 
@@ -4706,6 +4903,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // Distinct highlight for proc <proc>, data, run, quit
 
 // Do minimal possible changes by default. Need to collect feedback prior
+
+// Do not format unclassified values. Needed to exclude highlighting of values as built_in.
 
 // Doesn't seem to recognize floats which start with '.'
 
@@ -4735,6 +4934,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // EXPAND
 
+// Element names can contain letters, digits, hyphens, underscores, and periods
+
 // Emojies & shortcuts replacement logic.
 
 // Emoticons -> Emoji mapping.
@@ -4755,9 +4956,9 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Expression keywords prevent 'keyword Name(...)' from being
 
-// F# class declaration?
-
 // FIXME these comments should be allowed to span indented lines
+
+// FIXME: Support Unicode identifiers.
 
 // Facet sections
 
@@ -4789,6 +4990,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Flatten shortcuts to simple object: { alias: emoji_name }
 
+// Float
+
 // Float number and x87 BCD
 
 // Flush pending text
@@ -4799,9 +5002,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // For example, you can use '«»„“' for Russian, '„“‚‘' for German,
 
+// For instance, in the following example, it would match "echo /path/to/home >" as a prompt:
+
 // For validation mode we can terminate immediately
 
 // Forbid some cunstructs from other languages to improve autodetect. In fact
+
+// Freeze prop if it is an object
+
+// Freeze self
 
 // Function definitions
 
@@ -4812,6 +5021,12 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // Fuzzy link can't be prepended with .:/\- and non punctuation.
 
 // GFM table, non-standard
+
+// GNU ARM syntax
+
+// GNU MIPS syntax
+
+// GNU preprocs
 
 // Generate markers.
 
@@ -4827,15 +5042,25 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Global variable: set ^globalName = 12 write ^globalName
 
+// Grammar extensions / plugins
+
+// Grammar extensions allow "syntactic sugar" to be added to the grammar modes
+
 // HACK: This lets handlebars do the auto-detection if it's been loaded (by
 
 // HEX values
 
 // HTML block
 
+// HTML should not include another raw `<` inside a tag
+
 // HTML tags
 
 // HTML5 entities map: { name -> utf16string }
+
+// Handle `@examples` separately to cause all subsequent code
+
+// Handle `@param` to highlight the parameter name following
 
 // Handle the basic code points
 
@@ -4851,7 +5076,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Hex number in $
 
+// HexIntegerLiteral
+
 // Hexadecimal notation, e.g., $7F.
+
+// HexadecimalFloatingPointLiteral
 
 // Highlighter function. Should return escaped HTML,
 
@@ -4872,6 +5101,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // IPv4
 
 // IPv6
+
+// Identifiers in R cannot start with `_`, but they can start with `.` if it
 
 // If a fence has heading spaces, they should be removed from its inner block
 
@@ -4941,6 +5172,14 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Instruction pointer
 
+// Integer (base 10)
+
+// Integer (base 16)
+
+// Integer (base 2)
+
+// Integer (base 8)
+
 // Internal state vartiables
 
 // It exists only as a hack because blockquotes override bMarks
@@ -4955,15 +5194,21 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // JS handles these with a special rule
 
+// JS use strict rule purposely excludes `asm` which makes no sense
+
 // JSX
 
 // Just a shortcut for bulk export
 
 // Keywords from all version of PureBASIC 5.00 upward ...
 
+// Keywords that require a leading dot.
+
 // Known functions - only when followed by '('
 
 // Languages causing problems for language detection:
+
+// LegacyOctalIntegerLiteral (does not include underscore separators)
 
 // Length is only used for emphasis-specific "rule of 3",
 
@@ -5031,7 +5276,7 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Merge objects
 
-// Monkey one line comment
+// Metatags and globals:
 
 // Moonscript keywords
 
@@ -5045,17 +5290,23 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Next scan position
 
+// No markup, relevance booster
+
 // No need for bounds check because we have fake entry on tail.
 
-// Normal keywords.
+// NonDecimalIntegerLiteral
 
 // Normalize input string
 
 // Normalize newlines
 
+// Not sure it's correct to call NULL literal, and clauses like IS [NOT] NULL look strange that way.
+
 // Note that any invalid chars are also handled, but these
 
 // Note: In theory, it could be faster to parse :smile: in inline chain and
+
+// Note: no leading \b because floats can start with a decimal point
 
 // Note: this is equivalent to unicode case folding; unicode normalization
 
@@ -5075,9 +5326,17 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Octal notation, e.g., &42.
 
+// OctalIntegerLiteral
+
 // On success, rule should:
 
 // One-line quoted comment string
+
+// Operators https://docs.microsoft.com/dotnet/visual-basic/language-reference/operators
+
+// Optional type
+
+// Other LaTeX3 macro names that are not covered by the three rules above.
 
 // Other numbers
 
@@ -5121,9 +5380,13 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Pending string is stored in concat mode, indexed lookups will cause
 
+// Perl at all like $ident$, @ident@, etc.
+
 // Permission is hereby granted, free of charge, to any person obtaining a
 
 // Places to look for more emoticons info:
+
+// Prevent -> from being highlighting as an operator.
 
 // Prevent void elements from having an end tag that would actually
 
@@ -5149,6 +5412,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Prohibit any of "@/[]()" in user/pass to avoid wrong domain fetch.
 
+// Protocol composition
+
 // Pseudo-types which allowed only as return type
 
 // Pull that off.
@@ -5160,6 +5425,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // Quick fail on second char
 
 // Quirk to enforce "hard termination mode" for paragraphs;
+
+// R also supports quoted identifiers, which are near-arbitrary sequences
 
 // RE pattern for 2-character tlds (autogenerated by ./support/tlds_2char_gen.js)
 
@@ -5203,11 +5470,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Review our test case against browsers more comprehensively.
 
+// Roxygen comments
+
 // Ruby/Rails erb
 
 // Rude test fuzzy links by host, for quick deny
 
 // Rule definition
+
+// Rule name
 
 // Rule to skip pure text
 
@@ -5246,6 +5517,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // See further comments in c-like.js.
 
 // See the comment in the <style tag about the lookahead pattern
+
+// See: https://github.com/highlightjs/highlight.js/issues/2833
 
 // Sequences. We actually skip everything between CACHE|INCREMENT|MAXVALUE|MINVALUE and
 
@@ -5305,6 +5578,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Special case:
 
+// Special case: only hexadecimal binary powers can contain fractions.
+
 // Special emphasis for datalines|cards
 
 // Specific
@@ -5321,8 +5596,6 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Stores { start: end } pairs. Useful for backtrack
 
-// StringRiffle[
-
 // Strings
 
 // Strings, see https://www.postgresql.org/docs/11/static/sql-syntax-lexical.html#SQL-SYNTAX-CONSTANTS
@@ -5335,7 +5608,13 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // TODO:
 
+// TODO: Interpolation can contain any expression, so there's room for improvement here.
+
 // TODO: These spaces are not required by the Ada syntax
+
+// TODO: Use `beforeMatch:` for indentation once available
+
+// TODO: Use `beforeMatch:` for leading spaces
 
 // TODO: We need negative look-behind support to do this properly
 
@@ -5353,6 +5632,12 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // TODO: remove |$ hack when we have proper look-ahead support
 
+// TODO: replace with negative look-behind when available
+
+// TODO: split into different categories of keywords
+
+// TS gets a simpler shebang rule than JS
+
 // Taken from http://developer.couchbase.com/documentation/server/4.5/n1ql/n1ql-language-reference/functions.html
 
 // Taken from http://developer.couchbase.com/documentation/server/4.5/n1ql/n1ql-language-reference/literals.html
@@ -5363,8 +5648,6 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // The following is because we have no easy way to say "resume scanning at the
 
-// The list of "keywords" (System` symbols) was determined by evaluating the following Wolfram Language code in Mathematica 12.0:
-
 // The module cache
 
 // The require function
@@ -5374,6 +5657,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // This is here for relevance.
 
 // This is necessary because initially emphasis delimiter markers (*, _, ~)
+
+// This is now either a tag or a type.
 
 // This is to support parse stuff like "  http://foo.com  \n"
 
@@ -5409,6 +5694,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Try to take previous element from cache, if .test() called before
 
+// Type identifier
+
 // Types
 
 // URLs are obnoxious.
@@ -5441,9 +5728,13 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // Value types
 
+// Variadic parameter
+
 // WITH|WITHOUT TIME ZONE as part of datatype
 
 // Walk through delimiter list and replace text tokens with tags
+
+// We cannot add \s (spaces) in the regular expression otherwise it will be too broad and produce unexpected result.
 
 // We don't want the php closing tag ?> to close the PHP block when
 
@@ -5468,6 +5759,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // YAML spec allows non-reserved URI characters in tags.
 
 // Zs (unicode class) || [\t\f\v\r\n]
+
+// [ ] because \s would be too broad (matching newlines)
 
 // [Attributes("")]
 
@@ -5503,7 +5796,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // `basicLength` is the number of basic code points.
 
+// `begin` when it runs.  Ie, no features have been added, but we've just made
+
 // `class` as a keyword
+
+// `compileMatch` being the perfect small example of now allowing a grammar
 
 // `handledCPCount` is the number of code points that have been handled;
 
@@ -5514,6 +5811,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // `mode.lexemes` was the old standard before we added and now recommend
 
 // `return some()`, `else if()`, `(x*sum(1, 2))`
+
+// `test/markup/r/roxygen.txt` for an example.
 
 // a 0 width match but not a begin/end match so it's not caught by the
 
@@ -5537,35 +5836,47 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // a word boundary is not sufficient, so instead we check for a word boundary
 
+// aa and xx are valid, making max length 12
+
 // abstracts
 
 // actually we want them all except SQL; listed are those with known implementations
 
 // add non-matched text to the current mode buffer
 
-// admonition
+// added for historic reasons because `hljs.C_LINE_COMMENT_MODE` does
+
+// adds 1e5, 1e-10
 
 // advance so we aren't stuck in an infinite loop
+
+// after.
 
 // aka. 0x7FFFFFFF or 2^31-1
 
 // all prior rules are also skipped which can result in matching the wrong
 
-// allow Fortran 77 style comments
+// allow FORTRAN 77 style comments
 
 // allow HTMLBars to participate in the auto-detection
 
 // allow `C = value` for assignments so they aren't misdetected
 
-// allow empty columns before and after table, but not in between columns;
+// allow beforeMatch to act as a "qualifier" for the match
 
-// allow escaped asterisk followed by word char
+// allow empty columns before and after table, but not in between columns;
 
 // allow escaped single quote followed by word char
 
+// allow nesting
+
 // allows XML everywhere and makes every XML snippet to have a much larger Markdown
 
+// also surrounded by parens.
+
 // always allow unencoded alphanumeric characters
+
+// always award the tie to the base language
 
 // ambiguously named function calls get a relevance of 0
 
@@ -5599,6 +5910,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // and increment current pos
 
+// and module_and_name may contain single underscores.
+
 // and no other characters are allowed but spaces;
 
 // and remove it afterwards.
@@ -5607,9 +5920,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // and titles (user defined function/procedure/package)
 
+// and we don't want to mishandle e.g. `0..hex()`; this should be safe
+
+// and we don't want to mishandle e.g. `fn(.5)`,
+
 // annotation is also used in this language
 
 // anonymous function start
+
+// another language than an actual comment
 
 // are multiples of 3.
 
@@ -5627,6 +5946,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // assume that it's an IPv6 address.
 
+// at least one identifier
+
 // at this point, either we have an explicit point where the
 
 // atSign can be anywhere.
@@ -5641,9 +5962,13 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // auth portion cannot go past, or the last @ char is the decider.
 
+// author to write `match` when they desire to match a single expression rather
+
 // autoconvert URL-like texts to links
 
 // avoid close detection with C# and JS
+
+// avoid conflicts with other rules
 
 // avoids the need to check length every time exec is called
 
@@ -5651,15 +5976,17 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // backreferences so they continue to match.
 
+// bare number
+
 // basically, this is the equivalent of /^[-:|][-:|\s]*$/ regexp
 
 // be considered part of the block
 
+// because both MUST contain a decimal point and so cannot be confused with
+
 // because emails enclosed in quotes are far more common
 
 // because it doesn’t let it to be parsed as
-
-// because it looks like attributes in HTML tags
 
 // because, if they are pointing at the same token, replaceAt
 
@@ -5673,7 +6000,9 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // bigfloat number
 
-// binary
+// bin
+
+// binary-literal
 
 // block attributes
 
@@ -5687,17 +6016,31 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // both are not allowed
 
+// bounding ( ).  There could be any number of sub-expressions inside
+
 // break on Less variables @var: ...
 
 // broken by replacing non-ASCII by nothing
 
 // broken sequence
 
+// built in func
+
 // built-in functions imported from https://web.archive.org/web/20160513042710/https://support.office.com/en-us/article/Excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188
+
+// built-in plugins, likely to be moved out of core in the future
 
 // built-in types
 
-// built-ins) are automatically generated from Julia v0.6 itself through
+// built-ins) are automatically generated from Julia 1.5.2 itself through
+
+// built_in and that makes up a lot of AutoHotkey code meaning that it
+
+// built_in: 'EXTRACT',
+
+// built_in: 'XMLELEMENT XMLPI',
+
+// built_in: 'XMLPARSE XMLSERIALIZE',
 
 // bundled size (e.g. a browser build).
 
@@ -5739,6 +6082,10 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // characters ''
 
+// characters (..., ...<, .*, etc). So there rule here is: a dot followed by one or more
+
+// characters that may also include dots.
+
 // check if it's outdented, i.e. it's inside list item and indented
 
 // check the block quote marker
@@ -5751,7 +6098,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // class tag
 
-// className: 'number',
+// className: "fn_ref",
+
+// className: "fn_ref_params",
+
+// className: 'built_in',
 
 // classNames in built-in modes.
 
@@ -5760,6 +6111,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // classes and objects
 
 // close raw block
+
+// close tag
 
 // closing block statement
 
@@ -5782,6 +6135,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // comment blocks
 
 // comments
+
+// common variable name
 
 // compilation
 
@@ -5809,7 +6164,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // context as 'meta-string' and there's no syntax to remove explicitly set
 
+// contextual
+
 // control codes
+
+// control word
 
 // convertion to flat mode.
 
@@ -5839,13 +6198,29 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // dart:html
 
+// date plus time
+
 // dates must have a certain length, this prevents matching
 
 // decent number of iterations yet our index (cursor position in our
 
-// decimal & fp mixed for simplicity
+// decimal floating-point-literal (subsumes decimal-literal)
+
+// decimal integer/float, optionally exponential or rational, optionally imaginary
+
+// decinteger is optionally imaginary
+
+// decinteger, bininteger, octinteger, hexinteger
+
+// def method_name (end of line)
+
+// def method_name(
+
+// def method_name;
 
 // default the build script will load in alphabetical order) and if not (perhaps
+
+// default to 1 relevance if not specified
 
 // default to space if it's the beginning of the line
 
@@ -5863,6 +6238,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // delete node.children;
 
+// delimited by backticks (`…`), which may contain escape sequences. These are
+
 // derivitives: c, c++, arduino turn auto-detect back on for themselves
 
 // different parents without issue
@@ -5875,15 +6252,25 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // distribute, sublicense, and/or sell copies of the Software, and to permit
 
-// dns
-
 // do not highlight inbuilt strings as variable or xml element names
+
+// do this early so compiler extensions generally don't have to worry about
+
+// do this later so compiler extensions that come earlier have access to the
+
+// doctags shouldn’t be treated as such. See
 
 // document attributes
 
+// does not include {} or HTML tags `</`
+
 // doesn't allow spaces in keywords anyways and we still check for the boundary
 
+// dot-operator: only operators that start with a dot are allowed to use dots as
+
 // dots
+
+// double quote escape
 
 // double quoted keys
 
@@ -5905,9 +6292,13 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // eats variables
 
+// echo /path/to/home > t.exe
+
 // edge case for when illegal matches $ (end of line) which is technically
 
 // either REPL-like or script-like, but are usually REPL-like and therefore we apply
+
+// empty ; rule
 
 // encode(string, keepEscaped)
 
@@ -5915,9 +6306,13 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // end
 
+// end parens
+
 // end the highlighting if we are on a new line and the line does not have at
 
 // end: '$',
+
+// end: /\(/,
 
 // endsWithParent: true,
 
@@ -5931,9 +6326,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // escaped
 
+// escaped constrained formatting marks (i.e., \* \_ or \`)
+
 // escaped identifier
 
+// escaped unconstrained formatting marks (i.e., \\** \\__ or \\``)
+
 // eslint-disable-next-line no-undefined
+
+// even if a single syntax or parse hits a fatal error
 
 // even if on:end fires an `ignore` it's still possible
 
@@ -5943,11 +6344,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // excludes method names from keyword processing
 
+// excluding ExponentPart
+
 // existing position but also skip the current rule ONLY". What happens is
 
-// explicit integer
+// explicit decimal/binary/octal/hexadecimal integer,
 
 // explosion under V8. It effectively means `| var1 var2 ... |` with
+
+// exponentfloat, pointfloat
 
 // export an "instance" of the highlighter
 
@@ -5975,6 +6380,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // figure out if it's got a host
 
+// find regex
+
 // find the first instance of any hostEndingChars
 
 // first
@@ -5982,8 +6389,6 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // first character of the second line should be '|', '-', ':',
 
 // first handler (when ignoreIllegals is true)
-
-// first internal before callbacks, then the public ones
 
 // first parse unambiguous selectors (i.e. those not starting with tag)
 
@@ -5997,6 +6402,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // float number w/out exponent
 
+// followed by a single ':' in many languages
+
 // following conditions:
 
 // for a very generally defined mode (starts with a word, ends with line-end
@@ -6005,13 +6412,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // for exports
 
-// for kw in Base.REPLCompletions.complete_keyword("")
+// for kw in collect(x.keyword for x in REPLCompletions.complete_keyword(""))
 
 // for languages with keywords that include non-word characters checking for
 
-// for name in Base.REPLCompletions.completions("", 0)[1]
+// for performance out of fear of regex.either(...Mathematica.SYSTEM_SYMBOLS)
 
-// foreach(println, ["in", "isa", "where"])
+// foreach(x -> println("\'", x, "\',"), res)
+
+// forward slashes are not allowed
 
 // found in other languages
 
@@ -6032,6 +6441,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // function/procedure declaration/definition
 
 // function: -> =>
+
+// function_name may contain single underscores.
 
 // functions
 
@@ -6055,15 +6466,29 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // gradle
 
+// guard: constrained formatting mark may not be preceded by ":", ";" or
+
 // guess schemaless links
+
+// hack: eating everything after the first title
 
 // hack: in range constraints, lower must follow "<"
 
 // hack: in range constraints, upper must follow either , or <
 
+// hack: prevents detection of keywords after dots
+
+// hack: prevents detection of keywords in some circumstances
+
+// handled in a separate mode. See `test/markup/r/names.txt` for examples.
+
 // hard or soft error
 
 // has already been here, but just to make sure we can do that.
+
+// has some effect
+
+// have historically been settled, ie the language that comes first always
 
 // header row will define an amount of columns in the entire table,
 
@@ -6075,9 +6500,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // heredocs
 
+// hex
+
 // hex colors
 
-// hex value
+// hexadecimal floating-point-literal (subsumes hexadecimal-literal)
 
 // high surrogate, and there is a next character
 
@@ -6087,11 +6514,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // highlight map keys and named parameters as attrs
 
+// highlighting. variable is comparably the most accurate that actually
+
 // hmm, I wonder if we ought to include other exponent markers?
 
 // hopefully no one would use PATH type in XMLTABLE...
-
-// horizontal rules
 
 // how the browser resolves relative URLs.
 
@@ -6113,15 +6540,35 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
 
+// https://docs.oracle.com/javase/specs/jls/se15/html/jls-3.html#jls-3.10
+
+// https://docs.python.org/2.7/reference/lexical_analysis.html#integer-and-long-integer-literals
+
+// https://docs.python.org/3.9/reference/lexical_analysis.html#floating-point-literals
+
+// https://docs.python.org/3.9/reference/lexical_analysis.html#imaginary-literals
+
+// https://docs.python.org/3.9/reference/lexical_analysis.html#integer-literals
+
+// https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID411
+
+// https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID413
+
+// https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html
+
 // https://github.com/commonmark/cmark/issues/178#issuecomment-270417442
 
 // https://github.com/highlightjs/highlight.js/issues/1086
 
-// https://github.com/substack/deep-freeze/blob/master/index.js
+// https://llvm.org/docs/LangRef.html#namedmetadatastructure
 
 // https://msdn.microsoft.com/en-us/library/ms714428(v=vs.85).aspx
 
+// https://perldoc.perl.org/perlre#Modifiers
+
 // https://spec.commonmark.org/0.29/#line-ending
+
+// https://tc39.es/ecma262/#sec-additional-syntax-numeric-literals
 
 // https://www.postgresql.org/docs/11/static/datatype.html
 
@@ -6133,7 +6580,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // id tag
 
+// identifier followed by a equal-sign (without the equal sign)
+
 // identifiers in quotes
+
+// ie if C++ and Arduino are tied, it's more likely to be C++
 
 // if "booger" is ignored then we'd really need a regex to scan from the
 
@@ -6151,6 +6602,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // if opening marker is "(", switch it to closing marker ")"
 
+// if we cannot find a matching closing tag, then we
+
 // if we have dependencies on parents then we need a unique
 
 // if we have variants then essentially "replace" the mode with the variants
@@ -6161,7 +6614,13 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // illegal match, we do not continue processing
 
+// illegal syntax
+
 // images and links
+
+// imagnumber (digitpart-based)
+
+// import REPL.REPLCompletions
 
 // in 'avrasm' autodetection test...
 
@@ -6172,6 +6631,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // in the middle of the words, i.e.:
 
 // in which case we don't even need to call highlight
+
+// including ExponentPart
 
 // increase level if we find text `[`, which is not a part of any token
 
@@ -6187,19 +6648,35 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // infinite loops are BAD, this is a last ditch catch all. if we have a
 
+// infix operator
+
 // inherit is a workaround for a bug that makes shared modes with endsWithParent compile only the ending of one of the parents
 
 // inline code snippets (TODO should get same treatment as strong and emphasis)
 
-// inline emphasis
+// inline constrained emphasis (multi-line)
 
-// inline emphasis (alt)
+// inline constrained emphasis (single line)
+
+// inline constrained emphasis using single quote (legacy)
+
+// inline constrained strong (multi-line)
+
+// inline constrained strong (single line)
 
 // inline javascript (or whatever host language) *multiline* string
 
 // inline smart quotes
 
-// inline strong
+// inline unconstrained emphasis
+
+// inline unconstrained emphasis (multi-line)
+
+// inline unconstrained emphasis (single line)
+
+// inline unconstrained strong (multi-line)
+
+// inline unconstrained strong (single line)
 
 // inside a list, it would be positioned after list marker)
 
@@ -6225,9 +6702,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // ipv6 address
 
+// irb(main):001:0>
+
 // is a different step that is not required here.
 
+// is a tag and not a false positive
+
 // is currently an exercise for the caller. :-)
+
+// is not immediately followed by a digit.
 
 // is the last character of a preceding identifier, as in: `func?4`
 
@@ -6235,11 +6718,13 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // it can start an emphasis sequence or end an emphasis sequence.
 
+// it from ending too early by matching another }
+
 // it prevents the value contain rule from grabbing this instead and
 
-// it's considered a lazy continuation regardless of what's there
+// it will be the same actual JS object
 
-// jboss-cli
+// it's considered a lazy continuation regardless of what's there
 
 // jinja templates Ansible
 
@@ -6253,6 +6738,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // just be changing the object it was passed
 
+// keep continuations for sub-languages
+
 // key: everything until whitespace or = or : (taking into account backslashes)
 
 // keywords
@@ -6261,11 +6748,17 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // keywords that should have no default relevance value
 
+// keywords with less than 3 letters are reduced in relevancy
+
 // keywords: 'AppDataCommonDir AppDataDir AutoItExe AutoItPID AutoItVersion AutoItX64 COM_EventObj CommonFilesDir Compiled ComputerName ComSpec CPUArch CR CRLF DesktopCommonDir DesktopDepth DesktopDir DesktopHeight DesktopRefresh DesktopWidth DocumentsCommonDir error exitCode exitMethod extended FavoritesCommonDir FavoritesDir GUI_CtrlHandle GUI_CtrlId GUI_DragFile GUI_DragId GUI_DropId GUI_WinHandle HomeDrive HomePath HomeShare HotKeyPressed HOUR IPAddress1 IPAddress2 IPAddress3 IPAddress4 KBLayout LF LocalAppDataDir LogonDNSDomain LogonDomain LogonServer MDAY MIN MON MSEC MUILang MyDocumentsDir NumParams OSArch OSBuild OSLang OSServicePack OSType OSVersion ProgramFilesDir ProgramsCommonDir ProgramsDir ScriptDir ScriptFullPath ScriptLineNumber ScriptName SEC StartMenuCommonDir StartMenuDir StartupCommonDir StartupDir SW_DISABLE SW_ENABLE SW_HIDE SW_LOCK SW_MAXIMIZE SW_MINIMIZE SW_RESTORE SW_SHOW SW_SHOWDEFAULT SW_SHOWMAXIMIZED SW_SHOWMINIMIZED SW_SHOWMINNOACTIVE SW_SHOWNA SW_SHOWNOACTIVATE SW_SHOWNORMAL SW_UNLOCK SystemDir TAB TempDir TRAY_ID TrayIconFlashing TrayIconVisible UserName UserProfileDir WDAY WindowsDir WorkingDir YDAY YEAR',
 
 // kind:
 
+// kw or kw(arg)
+
 // label
+
+// label reference
 
 // labeled as an f-string as in:
 
@@ -6313,9 +6806,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // listing and literal blocks
 
-// lists (can only capture indicators)
+// literal
 
 // literals
+
+// local labels: %?[FB]?[AT]?\d{1,2}\w+
 
 // looks like #-comment
 
@@ -6347,6 +6842,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // match at this very spot
 
+// match enum items (relevance)
+
 // match group, keeping track of the sequencing of those match groups
 
 // match groups that make up the multi-matcher)
@@ -6354,6 +6851,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // match strings inside of XML tags
 
 // matching these here allows us to treat them more like regular CSS
+
+// may contain single underscores.
 
 // maybe inside generic
 
@@ -6364,6 +6863,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // merge all the modes/regexs into our main object
 
 // merge those into one strong delimiter.
+
+// metadata
 
 // middle of word
 
@@ -6378,6 +6879,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // mode & 8|1: behave like require
 
 // modes. For example, to parse bold/italic only.
+
+// modifier (character varying)
 
 // module
 
@@ -6397,11 +6900,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // multi-line string
 
+// must ignore until the next formatting marks
+
 // must not follow a word character or be followed by a single quote or space
 
-// must not follow a word character or be followed by an asterisk or space
-
-// must not follow a word character or be followed by an underline or space
+// must not precede or follow a word character
 
 // name of the function/procedure
 
@@ -6412,6 +6915,12 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // nearest following numeric constant. Without with trick we find a lot of "keywords"
 
 // needed to allow markdown as a sublanguage to work
+
+// negative look-ahead tries to avoid matching patterns that are not
+
+// negative-look forward attemps to prevent false matches like:
+
+// nested type?
 
 // never used
 
@@ -6429,6 +6938,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // no special dependency issues, just return ourselves
 
+// no trailing \b for pointfloat because it can end with a decimal point
+
 // node.text = node.children.join("");
 
 // normally if you call `tokenize(state, startLine, nextLine)`,
@@ -6439,15 +6950,17 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // not implemented in the language
 
+// not include such support nor can we be sure all the grammars depending
+
+// not part of an identifier
+
 // now we prefer to keep things local.
 
 // number
 
 // number literals
 
-// number with leading decimal
-
-// number with trailing decimal
+// number local label reference (backwards, forwards)
 
 // numbered local labels
 
@@ -6461,13 +6974,21 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // object handles
 
-// octal
+// obviously a single digit can also be used in this fashion
+
+// octal-literal
 
 // of each line (bMarks) and real beginning of that line.
 
 // offsets of the first non-space characters (tabs not expanded)
 
+// on it would desire this behavior
+
+// one comment word, then possibly more
+
 // only 6
+
+// only in Haskell, not R
 
 // only regexes not matched previously will now be
 
@@ -6475,9 +6996,19 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // open raw block "{{{{raw}}}} content not evaluated {{{{/raw}}}}"
 
+// open tag
+
 // opening tag
 
+// operator
+
 // optimization of pairs parse (emphasis, strikes).
+
+// optionally "long" in Python 2
+
+// optionally imaginary
+
+// optionally rational and/or imaginary
 
 // or '' if the source string is not changed and should be escaped externaly.
 
@@ -6488,6 +7019,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // or whitespace - this does no harm in any case since our keyword engine
 
 // otherwise it’s identified as tag
+
+// otherwise say they are equal, which has the effect of sorting on
 
 // our matcher is [string, "booger", number]
 
@@ -6511,7 +7044,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // patched tShift masked characters to look like spaces (blockquotes, list markers)
 
+// perhaps to prevent attributes from flagging as keywords?
+
 // persons to whom the Software is furnished to do so, subject to the
+
+// plaintext is always an option
 
 // plug::ins
 
@@ -6521,6 +7058,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // points were copied; start at the beginning otherwise.
 
+// popular internet URLs
+
 // position, but the second full matcher starting at the position after:
 
 // pragma
@@ -6529,15 +7068,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // prevening this rule from firing when we actually DO have keys.
 
-// prevent references like module.id from being highlighted as module definitions
+// prevent this from getting swallowed up by function
+
+// preventing highlighting. This code is example R code, so nested
 
 // prevents expressions like `@class` from incorrect flagging
 
+// prevents these from being highlighted `title`
+
 // primary tags
-
-// println("false")
-
-// println("true")
 
 // process essentially allows us to say "match at this position, excluding
 
@@ -6557,6 +7096,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // quoteblocks
 
+// raw array if they wanted to perhaps manipulate it, etc.
+
 // re-calculate levels after emphasis/strikethrough turns some text nodes
 
 // re-export Token class to use in block rules
@@ -6565,7 +7106,7 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // recognized as a function definition
 
-// ref: http://julia.readthedocs.org/en/latest/manual/variables/#allowed-variable-names
+// ref: https://docs.julialang.org/en/v1/manual/variables/#Allowed-Variable-Names
 
 // regex can't start with *, and it supports an "illegal" in the main mode
 
@@ -6579,7 +7120,23 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // registered function - no need in them due to all functions are highlighted,
 
+// relative or absolute path
+
+// relative urls
+
+// relevance 0 because this is acting as a beginKeywords really
+
+// relevance boost
+
+// relevance boost for assignment
+
 // relevance booster
+
+// relevance booster for inheritance
+
+// relevance while preserving the original ordering - which is how ties
+
+// relevance: 1
 
 // relevance: 5
 
@@ -6593,13 +7150,17 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // replace token.content *before* tokens[item.token].content,
 
+// request
+
 // required block content indent (for example, if we are
+
+// res = String["in", "isa", "where"]
 
 // resolution will treat //foo/bar as host=foo,path=bar because that's
 
-// restore old state
+// response
 
-// return
+// restore old state
 
 // return TokenTree._walk(builder, this.rootNode);
 
@@ -6613,15 +7174,17 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // returns the end of the label
 
-// roboconf - лютый костыль )))
+// rule is not matched multiple times
 
 // rules so everything between the {} gets regular rule highlighting,
 
+// safe/production mode - swallows more errors, tries to keep running
+
 // save cursor state, we could require to rollback later
 
-// scan marker length
+// scan mark \s_the_name or \s__vthe_name,
 
-// scientific notation
+// scan marker length
 
 // score.
 
@@ -6629,11 +7192,11 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // search end of block
 
-// second_best (with underscore) is the expected API
-
 // secondary tags
 
 // see comment above the definition
+
+// seems to be a guard against [ident]' or [ident].
 
 // self is not valid at the top-level
 
@@ -6655,6 +7218,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // simply match with C++.
 
+// since they appear "function like"
+
 // single-line comments
 
 // sit isolated from other words
@@ -6665,8 +7230,6 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // skip disabled methods
 
-// skip generic stuff
-
 // skip heading spaces for next line
 
 // skip leading whitespaces from next line
@@ -6674,6 +7237,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // skip one optional space after '>'
 
 // skip trailing spaces until the rest of the line
+
+// slated to be removed in v11
 
 // so all that's left to do is to call tokenizer.
 
@@ -6693,6 +7258,10 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // sometimes they can end up matching nothing at all
 
+// sort base on relevance
+
+// sort!(unique!(res))
+
 // space
 
 // special case: 1"" - count first quote as an inch
@@ -6704,6 +7273,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // sql (ada default.txt has a lot of sql keywords)
 
 // start of the sequence.
+
+// starts conflicts with endsParent which we need to make sure the child
 
 // starts with domain name. So we prepend http:// in those cases,
 
@@ -6719,6 +7290,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // strings "foobar"
 
+// strings below will be fed into the regular `keywords` engine while regex
+
 // strip [ and ] from the hostname
 
 // sub-expressions inside also surrounded by parens.
@@ -6726,6 +7299,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // sub-languages: are not fully supported by hljs by 11/15/2015
 
 // sub.example.*
+
+// subst would be the most accurate however fails the point of
 
 // substitution within a macro
 
@@ -6739,6 +7314,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // swallow namespace qualifiers before symbols
 
+// symbol would be most accurate however is highlighted just like
+
 // table
 
 // table environment
@@ -6746,6 +7323,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // table header row
 
 // tags
+
+// take no arguments so can be called without ()
 
 // template string
 
@@ -6759,13 +7338,19 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // testcase status and description
 
+// than being forced to use `begin`.  The extension then just moves `match` into
+
 // that we might trigger the end node because of a parent mode
 
 // the base c-like language will NEVER be auto-detected, rather the
 
 // the default mode which is how it should be.
 
+// the distinction between match/begin
+
 // the entire sequence in future checks. This is required to make
+
+// the experience of writing (and reading grammars) a little bit nicer.
 
 // the first basic code points to the output.
 
@@ -6775,11 +7360,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // the following scripts for each.
 
+// the full match begin must be [beforeMatch][begin]
+
 // the function class is a bit different for AspectJ compared to the Java language
 
 // the host field still retains them, though
 
 // the host is the remaining to the left of the first non-host char
+
+// the interior part of an identifier
 
 // the last backtick, but as if it was a normal character
 
@@ -6811,6 +7400,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // this could be a closing quote, rewind the stack to get a match
 
+// this could be a lot of things (in other languages) other than params
+
 // this does not
 
 // this function assumes that first character ("[") already matches;
@@ -6823,6 +7414,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // this is purely for cleaner HTML output
 
+// this matches "empty comments"...
+
 // this mode also handles mixin definitions and calls
 
 // this mode works as the only relevance counter
@@ -6831,9 +7424,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // this prevents 'new Name(...), or throw ...' from being recognized as a function definition
 
+// this rule might not be 100% compliant with Asciidoctor 2.0 but we are entering undefined behavior territory...
+
 // this should be ... } else { ... branch
 
+// this should update anywhere keywords is used since
+
 // this swallows entire URLs to avoid detecting numbers within
+
+// this will be extended by TypeScript
 
 // this works
 
@@ -6849,6 +7448,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // to catch unknown shells but still highlight the shebang
 
+// to have any real relevance
+
 // to lower case
 
 // to maintain them by hand. Hence these names (i.e. keywords, literals and
@@ -6860,6 +7461,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // to prevent it from being confused as the function title
 
 // to the left of the last @ sign, unless some host-ending character
+
+// too much like nested array access in so many languages
 
 // treat beginning of the line as a whitespace
 
@@ -6886,6 +7489,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // unmatched surrogate; only append this code unit, in case the next
 
 // unprintable ASCII chars + non-ASCII chars
+
+// until the next `@`-tag on its own line to be kept as-is,
 
 // uppercase U+0398 (Θ), U+03f4 (ϴ) and lowercase U+03b8 (θ), U+03d1 (ϑ)
 
@@ -6937,6 +7542,8 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // version of format and total amount of testcases
 
+// very common convention
+
 // was the first match), a simple resume would scan ahead who knows how
 
 // we also need to allow for multiple possible comments inbetween
@@ -6947,15 +7554,25 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // we can only have a single title
 
+// we carefully check the opening tag to see if it truly
+
 // we have to count the parens to make sure we actually have the
+
+// we have to count the parens to make sure we actually have the correct
 
 // we know that it's going to be a valid blockquote,
 
+// we need a null object, which inherit will guarantee
+
 // we need our own copy of contains
+
+// we need this for now for jSX
 
 // we need this to make sure size of hostname is not
 
 // we need to look ahead to make sure that we actually have an
+
+// we need to pair up {} inside our subst to prevent
 
 // we need to re-match the 'function' keyword, so that
 
@@ -6971,6 +7588,14 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // webpackBootstrap
 
+// whatever else, lower relevance (might not be a link at all)
+
+// where both module and function_name need at least two characters and
+
+// where scope is one of l, g or c, type needs at least two characters
+
+// where variable_name needs at least two characters and
+
 // which can be terminated by this one.
 
 // which gets added to `i`. The overflow checking is easier
@@ -6980,6 +7605,12 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 // whitespace adjacent to `|` being optional.
 
 // whitespaces: space, tab, formfeed
+
+// will ignore it
+
+// will result in additional modes being created to scan for those keywords to
+
+// wins in the case of a tie
 
 // with code comments
 
@@ -6993,11 +7624,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // without limitation the rights to use, copy, modify, merge, publish,
 
+// without requiring any underlying changes to the compiler internals.
+
 // workaround for this case
 
 // workaround to avoid highlighting
 
 // worse case someone will have HTMLbars and handlebars competing for the same
+
+// would fail to highlight anything
 
 // wrap-around to considering all matches again
 
@@ -7009,7 +7644,15 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // yes, Less identifiers may begin with a digit
 
+// zero relevance as it catches a lot of things
+
 // {
+
+// { begin: /(?<![a-zA-Z0-9._])(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?[Li]?/ }
+
+// { begin: /(?<![a-zA-Z0-9._])0[xX][0-9a-fA-F]+([pP][+-]?\d+)?[Li]?/ },
+
+// { begin: /(?<![a-zA-Z0-9._])0[xX][0-9a-fA-F]+\.[0-9a-fA-F]*[pP][+-]?\d+i?/ },
 
 // }
 
@@ -7019,132 +7662,10 @@ See: https://github.com/highlightjs/highlight.js/issues/2146
 
 // İ, ϴ, ẞ, Ω, K, Å - those are already uppercased, but have differently
 
-// Не форматировать не классифицированные значения. Необходимо для исключения подсветки значений как built_in.
-
 // Определение идентификаторов
 
 // Определение имен функций
 
-// недопустимые конструкции
-
 // общий паттерн для определения идентификаторов
 
-//"$bit", "$bitcount",
-
-//"$bitfind", "$bitlogic", "$case", "$char", "$classmethod", "$classname",
-
-//"$change", "$mv", "$mvat", "$mvfmt", "$mvfmts", "$mviconv",
-
-//"$compile", "$data", "$decimal", "$double", "$extract", "$factor",
-
-//"$find", "$fnumber", "$get", "$increment", "$inumber", "$isobject",
-
-//"$io", "$job", "$key", "$namespace", "$principal", "$quit", "$roles",
-
-//"$isvaliddouble", "$isvalidnum", "$justify", "$length", "$list",
-
-//"$listbuild", "$listdata", "$listfind", "$listfromstring", "$listget",
-
-//"$listlength", "$listnext", "$listsame", "$listtostring", "$listvalid",
-
-//"$locate", "$match", "$method", "$name", "$nconvert", "$next",
-
-//"$mviconvs", "$mvinmat", "$mvlover", "$mvoconv", "$mvoconvs", "$mvraise",
-
-//"$mvtrans", "$mvv", "$mvname", "$zbitand", "$zbitcount", "$zbitfind",
-
-//"$normalize", "$now", "$number", "$order", "$parameter", "$piece",
-
-//"$prefetchoff", "$prefetchon", "$property", "$qlength", "$qsubscript",
-
-//"$query", "$random", "$replace", "$reverse", "$sconvert", "$select",
-
-//"$sortbegin", "$sortend", "$stack", "$text", "$translate", "$view",
-
-//"$storage", "$system", "$test", "$this", "$tlevel", "$username",
-
-//"$wascii", "$wchar", "$wextract", "$wfind", "$wiswide", "$wlength",
-
-//"$wreverse", "$xecute", "$zabs", "$zarccos", "$zarcsin", "$zarctan",
-
-//"$x", "$y", "$za", "$zb", "$zchild", "$zeof", "$zeos", "$zerror",
-
-//"$zbitget", "$zbitlen", "$zbitnot", "$zbitor", "$zbitset", "$zbitstr",
-
-//"$zbitxor", "$zincrement", "$znext", "$zorder", "$zprevious", "$zsort",
-
-//"$zconvert", "$zcrc", "$zcyc", "$zdascii", "$zdchar", "$zf",
-
-//"$zcos", "$zcot", "$zcsc", "$zdate", "$zdateh", "$zdatetime",
-
-//"$zdatetimeh", "$zexp", "$zhex", "$zln", "$zlog", "$zpower", "$zsec",
-
-//"$zhorolog", "$zio", "$zjob", "$zmode", "$znspace", "$zparent", "$zpi",
-
-//"$ziswide", "$zlascii", "$zlchar", "$zname", "$zposition", "$zqascii",
-
-//"$zpos", "$zreference", "$zstorage", "$ztimestamp", "$ztimezone",
-
-//"$zqchar", "$zsearch", "$zseek", "$zstrip", "$zwascii", "$zwchar",
-
-//"$zsin", "$zsqr", "$ztan", "$ztime", "$ztimeh", "$zboolean",
-
-//"$ztrap", "$zversion"
-
-//"$zwidth", "$zwpack", "$zwbpack", "$zwunpack", "$zwbunpack", "$zzenkaku",
-
-//"device", "$ecode", "$estack", "$etrap", "$halt", "$horolog",
-
-//'^/{4,}$',
-
-//'function',
-
-//*/
-
-//////////////////////////////////////////////////////////////////////
-
 ////////////////////////////////////////////////////////////////////////////////
-
-//ARM syntax
-
-//GNU ARM syntax
-
-//GNU MIPS syntax
-
-//GNU preprocs
-
-//Metatags and globals:
-
-//Rule name
-
-//adds 1e5, 1e-10
-
-//bin
-
-//built in func
-
-//built_in: 'EXTRACT',
-
-//built_in: 'XMLELEMENT XMLPI',
-
-//built_in: 'XMLPARSE XMLSERIALIZE',
-
-//className: "fn_ref",
-
-//className: "fn_ref_params",
-
-//className: 'built_in',
-
-//end: /\(/,
-
-//hex
-
-//literal
-
-//local labels: %?[FB]?[AT]?\d{1,2}\w+
-
-//meaning that it would fail to highlight anything
-
-//subst would be the most accurate however fails the point of highlighting. variable is comparably the most accurate that actually has some effect
-
-//symbol would be most accurate however is highlighted just like built_in and that makes up a lot of AutoHotkey code
