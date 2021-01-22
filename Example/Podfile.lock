@@ -1,5 +1,5 @@
 PODS:
-  - MarkdownView (1.7.1)
+  - MarkdownView (1.7.2)
 
 DEPENDENCIES:
   - MarkdownView (from `../`)

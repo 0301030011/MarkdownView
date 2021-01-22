@@ -9,7 +9,7 @@
 
 > MarkdownView is a WKWebView based UI element, and internally use bootstrap, highlight.js, markdown-it.
 
-![GIF](https://github.com/keitaoouchi/MarkdownView/blob/master/sample.gif "GIF")
+![GIF](https://github.com/0301030011/MarkdownView/blob/master/sample.gif "GIF")
 
 ## How to use
 
@@ -62,7 +62,7 @@ MarkdownView is available through [Swift Package Manager](https://swift.org/pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/keitaoouchi/MarkdownView.git", from: "1.7.1")
+    .package(url: "https://github.com/0301030011/MarkdownView.git", from: "1.7.2")
 ]
 ```
 Alternatively, you can add the package directly via Xcode.
