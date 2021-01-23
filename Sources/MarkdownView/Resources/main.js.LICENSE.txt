@@ -4834,8 +4834,6 @@ Category: config
 
 // Compile postponed aliases
 
-// Compile regexp
-
 // Component sections
 
 // Constants
@@ -5008,6 +5006,8 @@ Category: config
 
 // Forbid some cunstructs from other languages to improve autodetect. In fact
 
+// Found matching closer length.
+
 // Freeze prop if it is an object
 
 // Freeze self
@@ -5020,7 +5020,7 @@ Category: config
 
 // Fuzzy link can't be prepended with .:/\- and non punctuation.
 
-// GFM table, non-standard
+// GFM table, https://github.github.com/gfm/#tables-extension-
 
 // GNU ARM syntax
 
@@ -5116,6 +5116,8 @@ Category: config
 
 // If nesting level exceeded - skip tail to the end. That's not ordinary
 
+// If no definitions are given, return empty regex to avoid replacements with 'undefined'.
+
 // If not supported schema check requested - terminate
 
 // If one of the delimiters can both open and close emphasis, then the
@@ -5129,8 +5131,6 @@ Category: config
 // If the previous delimiter has the same marker and is adjacent to this one,
 
 // If there is an @ in the hostname, then non-host chars *are* allowed
-
-// If there was an un-closed backtick, go back to just after
 
 // If this delimiter is matched as a valid opener, `end` will be
 
@@ -5272,7 +5272,7 @@ Category: config
 
 // Match typed numeric constants (1000, 12.34!, 1.2e5, 1.5#, 1.2D2)
 
-// May be, one day we will add .clone() for token and simplify this part, but
+// May be, one day we will add .deepClone() for token and simplify this part, but
 
 // Merge objects
 
@@ -5309,6 +5309,8 @@ Category: config
 // Note: no leading \b because floats can start with a decimal point
 
 // Note: this is equivalent to unicode case folding; unicode normalization
+
+// Nothing found in the cache, scan until the end of the line (or until marker is found)
 
 // Now split string to nodes
 
@@ -5496,6 +5498,8 @@ Category: config
 
 // Scan string until end reached
 
+// Scanned through the end, didn't find anything
+
 // Schemas compiler. Build regexps.
 
 // Scilab has more than 2000 functions. Just list the most commons
@@ -5563,6 +5567,8 @@ Category: config
 // So, we have to move all those markers after subsequent s_close tags.
 
 // Some control constructions: do ##class(Package.ClassName).Method(), ##super()
+
+// Some different length found, put it in cache as upper limit of where closer can be found
 
 // Some implementations (CNC controls) of G-code are interoperable with uppercase and lowercase letters seamlessly.
 
@@ -5842,6 +5848,8 @@ Category: config
 
 // actually we want them all except SQL; listed are those with known implementations
 
+// add '%' to exclude list because of https://github.com/markdown-it/markdown-it/issues/720
+
 // add non-matched text to the current mode buffer
 
 // added for historic reasons because `hljs.C_LINE_COMMENT_MODE` does
@@ -5900,7 +5908,7 @@ Category: config
 
 // and ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] for French (including nbsp).
 
-// and align row shouldn't be smaller than that (the rest of the rows can)
+// and align row should be exactly the same (the rest of the rows can differ)
 
 // and alphanumeric chars is percent-encoded.
 
@@ -5970,11 +5978,15 @@ Category: config
 
 // avoid conflicts with other rules
 
+// avoid crash if `closer.jump` is pointing outside of the array, see #742
+
 // avoids the need to check length every time exec is called
 
 // backreferenceRe matches an open parenthesis or backreference. To avoid
 
 // backreferences so they continue to match.
+
+// backtick length => last seen position
 
 // bare number
 
@@ -6330,6 +6342,8 @@ Category: config
 
 // escaped identifier
 
+// escaped pipe, '\|'
+
 // escaped unconstrained formatting marks (i.e., \\** \\__ or \\``)
 
 // eslint-disable-next-line no-undefined
@@ -6405,6 +6419,8 @@ Category: config
 // followed by a single ':' in many languages
 
 // following conditions:
+
+// for `~~` 1 marker = 2 characters
 
 // for a very generally defined mode (starts with a word, ends with line-end
 
@@ -6822,8 +6838,6 @@ Category: config
 
 // low surrogate
 
-// make \` close code sequence, but not open it;
-
 // make sure tail has spaces only
 
 // manual scores always win over common keywords
@@ -7047,6 +7061,8 @@ Category: config
 // perhaps to prevent attributes from flagging as keywords?
 
 // persons to whom the Software is furnished to do so, subject to the
+
+// pipe separating cells, '|'
 
 // plaintext is always an option
 
@@ -7370,17 +7386,15 @@ Category: config
 
 // the interior part of an identifier
 
-// the last backtick, but as if it was a normal character
-
 // the local part (i.e. everything up to `@`) intact.
 
 // the mode is ended by the title
 
+// the most similar to tables
+
 // the plugin can change anything in result to suite it
 
 // the plugin can change the desired language or the code to be highlighted
-
-// the reason is: `\` is correct code block
 
 // the title mode below matches only exactly once
 
@@ -7497,6 +7511,8 @@ Category: config
 // uppercased versions).
 
 // url should be normalized at this point, and existing entities are decoded
+
+// use 'blockquote' lists for termination because it's
 
 // use contains to gobble up multiple lines to allow the block to be whatever size
 

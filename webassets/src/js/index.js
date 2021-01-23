@@ -2,8 +2,7 @@ import hljs from 'highlight.js'
 import MarkdownIt from 'markdown-it'
 import emoji from 'markdown-it-emoji'
 import './../css/bootstrap.css'
-import './../css/gist.css'
-import './../css/github.css'
+import './../css/monokai.css'
 import './../css/index.css'
 
 window.showMarkdown = (percentEncodedMarkdown, enableImage = true) => {
